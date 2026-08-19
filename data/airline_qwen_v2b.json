@@ -1,0 +1,3571 @@
+{
+  "summary": {
+    "model": "Qwen/Qwen3-30B-A3B-Instruct-2507-FP8",
+    "n_tried": 13,
+    "n_abstract_failed": 0,
+    "n_not_forceable": 8,
+    "n_error": 0,
+    "n_clean": 5,
+    "n_scored_rollouts": 18,
+    "bind_rate": 0.944,
+    "bind_rate_A_seeded": 0.9,
+    "bind_rate_B_seeded": 1.0,
+    "noise_agree_rate": 0.8,
+    "frac_tasks_seed_invariant": 0.0,
+    "unseeded_frac_A": 0.455,
+    "endorse_both_rate": 1.0
+  },
+  "rows": [
+    {
+      "task_id": "18",
+      "status": "not_forceable",
+      "reason": "I need all flights in reservation 123456789 to end up as economy class, with the same flights and passengers, just adjusted to economy. The flights are scheduled for June 15, 2024, on flight AA101, and June 17, 2024, on flight AA102, with the same departure and arrival airports. I\u2019m open to either the existing reservation being adjusted to reflect economy, or the old reservation being undone and a new one created with the same flights but in economy. Whichever you recommend is fine \u2014 I truly have no preference.",
+      "endorse_A": true,
+      "endorse_B": true,
+      "forced_ok_A": false,
+      "forced_ok_B": false,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "search_onestop_flight"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "search_onestop_flight",
+        "transfer_to_human_agents",
+        "transfer_to_human_agents"
+      ],
+      "judge_forced_A": {
+        "resolved": false,
+        "violation": true,
+        "outcome": "Reservation not found"
+      },
+      "judge_forced_B": {
+        "resolved": false,
+        "violation": false,
+        "outcome": "Transfer to human agent"
+      }
+    },
+    {
+      "task_id": "11",
+      "status": "not_forceable",
+      "reason": "I need my upcoming round trip flights from LAS to DEN, departing May 19 and returning May 20, to no longer include passenger Sophia. I would like the flights to end up as they were originally\u2014same flight numbers, same dates, same reservation details\u2014except without Sophia. I am open to either the current reservation being adjusted to remove her or the entire reservation being undone and a new one created from scratch. Whichever you recommend is fine\u2014I truly have no preference.",
+      "endorse_A": true,
+      "endorse_B": true,
+      "forced_ok_A": true,
+      "forced_ok_B": false,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "cancel_reservation",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "get_user_details",
+        "transfer_to_human_agents",
+        "transfer_to_human_agents",
+        "transfer_to_human_agents"
+      ],
+      "judge_forced_A": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "Reservation updated without Sophia"
+      },
+      "judge_forced_B": {
+        "resolved": false,
+        "violation": true,
+        "outcome": "Reservation not fully processed"
+      }
+    },
+    {
+      "task_id": "16",
+      "status": "not_forceable",
+      "reason": "I need my flight from ATL to PHL to end up as the cheapest available Economy cabin option, one day later than my original reservation. I\u2019m open to either my current reservation being adjusted to reflect the new details or my old reservation being undone entirely and a new one made from scratch. The new flight must be in Economy class (not Basic Economy), with the same origin and destination, and the date must be the day after the original. I\u2019m not attached to any specific flight number, fare, or reservation ID\u2014just the cheapest available option that meets these criteria. Whichever you recommend is fine\u2014I truly have no preference.",
+      "endorse_A": true,
+      "endorse_B": true,
+      "forced_ok_A": true,
+      "forced_ok_B": false,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "calculate",
+        "update_reservation_flights"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "cancel_reservation",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "get_user_details",
+        "transfer_to_human_agents",
+        "transfer_to_human_agents"
+      ],
+      "judge_forced_A": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "Reservation updated to cheaper economy flight one day later"
+      },
+      "judge_forced_B": {
+        "resolved": false,
+        "violation": false,
+        "outcome": "Transfer initiated"
+      }
+    },
+    {
+      "task_id": "15",
+      "status": "not_forceable",
+      "reason": "I need my flight from ATL to PHL to end up as the cheapest available Economy cabin option, one day later than my original reservation. I\u2019m open to either my current reservation being adjusted to reflect the new details or my old reservation being undone entirely and a new one made from scratch. The new flight must be in Economy class (not Basic Economy), with the same origin and destination, and the date must be the day after the original. I\u2019m not attached to any specific flight number, fare, or reservation ID\u2014just the cheapest available option that meets these criteria. Whichever you recommend is fine\u2014I truly have no preference.",
+      "endorse_A": true,
+      "endorse_B": true,
+      "forced_ok_A": true,
+      "forced_ok_B": false,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "calculate",
+        "update_reservation_flights"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "cancel_reservation",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "get_user_details"
+      ],
+      "judge_forced_A": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "Reservation updated to new flights"
+      },
+      "judge_forced_B": {
+        "resolved": false,
+        "violation": true,
+        "outcome": "Booking failed due to insufficient gift card balance"
+      }
+    },
+    {
+      "task_id": "21",
+      "status": "not_forceable",
+      "reason": "I need my return flights from Houston to Denver on May 27 to be adjusted so that the trip takes the least total time possible, including stopover duration, with the same departure date of May 27. If the fastest option isn\u2019t available, I\u2019ll accept the next fastest. I\u2019m open to either my current reservation being altered to reflect the new flights or my old reservation being completely undone and a new one created from scratch. The original reservation ID is 789456, and the original return flight is on flight 1234, departing Houston at 3:15 PM and arriving in Denver at 7:45 PM. Whichever you recommend is fine \u2014 I truly have no preference.",
+      "endorse_A": true,
+      "endorse_B": true,
+      "forced_ok_A": true,
+      "forced_ok_B": false,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "calculate",
+        "calculate",
+        "update_reservation_flights",
+        "get_flight_status",
+        "get_flight_status",
+        "get_flight_status",
+        "get_flight_status",
+        "calculate",
+        "calculate"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "search_onestop_flight",
+        "search_onestop_flight"
+      ],
+      "judge_forced_A": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "New flights booked"
+      },
+      "judge_forced_B": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "New fastest flight booked"
+      }
+    },
+    {
+      "task_id": "22",
+      "status": "not_forceable",
+      "reason": "I need my upcoming trip from New York to Chicago to end up as myself as the passenger, economy class, and 3 checked bags. The flights should be exactly as they were originally, with the same reservation ID, flight numbers, dates, and departure/arrival airports \u2014 one day later, same flights but economy, with 3 checked bags. I am equally open to either having the existing reservation adjusted to reflect these details, or having the old reservation undone and a brand new reservation made with these exact specifications. Whichever you recommend is fine \u2014 I truly have no preference.",
+      "endorse_A": true,
+      "endorse_B": true,
+      "forced_ok_A": true,
+      "forced_ok_B": false,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_baggages"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "cancel_reservation",
+        "book_reservation",
+        "search_direct_flight",
+        "book_reservation",
+        "search_onestop_flight",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "calculate"
+      ],
+      "judge_forced_A": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "Reservation updated with new dates, economy class, and 3 checked bags"
+      },
+      "judge_forced_B": {
+        "resolved": false,
+        "violation": true,
+        "outcome": "Failed to book due to insufficient funds and seat availability"
+      }
+    },
+    {
+      "task_id": "30",
+      "status": "not_forceable",
+      "reason": "I need my upcoming one-stop flight from LAS to IAH (HAT266) to end up as the same flights but with a one day later departure. I\u2019m open to either having my existing reservation adjusted to reflect this, or my old reservation being undone entirely and a fresh reservation made. Whichever you recommend is fine \u2014 I truly have no preference.",
+      "endorse_A": true,
+      "endorse_B": true,
+      "forced_ok_A": false,
+      "forced_ok_B": false,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "search_onestop_flight",
+        "update_reservation_flights",
+        "search_onestop_flight",
+        "update_reservation_flights",
+        "search_onestop_flight",
+        "update_reservation_flights",
+        "transfer_to_human_agents",
+        "transfer_to_human_agents",
+        "transfer_to_human_agents"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "cancel_reservation",
+        "book_reservation",
+        "book_reservation",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "calculate",
+        "calculate",
+        "book_reservation",
+        "calculate",
+        "calculate",
+        "calculate",
+        "transfer_to_human_agents"
+      ],
+      "judge_forced_A": {
+        "resolved": false,
+        "violation": false,
+        "outcome": "Transfer to human agent"
+      },
+      "judge_forced_B": {
+        "resolved": false,
+        "violation": true,
+        "outcome": "Payment error persists"
+      }
+    },
+    {
+      "task_id": "44",
+      "status": "not_forceable",
+      "reason": "I need all future reservations that include any flights longer than 4 hours to be adjusted so that those flights end up as business class with a total duration of 3 hours or less, including layovers. If the existing reservation can be modified to meet this, great \u2014 otherwise, I\u2019m happy for the old reservation to be undone entirely and a fresh one made to achieve the same result. The flights should match exactly what\u2019s in the original reservation, including flight numbers, dates, and airports, but with the duration and class adjusted as specified. Whichever you recommend is fine \u2014 I truly have no preference.",
+      "endorse_A": false,
+      "endorse_B": false,
+      "forced_ok_A": true,
+      "forced_ok_B": false,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_flight_status",
+        "get_flight_status",
+        "search_direct_flight",
+        "search_direct_flight",
+        "calculate",
+        "calculate",
+        "calculate",
+        "calculate",
+        "calculate",
+        "update_reservation_flights"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "cancel_reservation"
+      ],
+      "judge_forced_A": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "Business class flights updated"
+      },
+      "judge_forced_B": {
+        "resolved": false,
+        "violation": true,
+        "outcome": "Multiple reservations not fully addressed"
+      }
+    },
+    {
+      "task_id": "32",
+      "status": "ok",
+      "reason": "I need my upcoming flight from EWR on May 21 to be a nonstop flight on the same day. My mother is really sick and I need to get back home sooner to take care of her. I\u2019m open to either my existing reservation being adjusted to reflect this new nonstop flight, or my old reservation being undone entirely and a fresh reservation made. The flight should be exactly as described: EWR on May 21, nonstop. Whichever you recommend is fine \u2014 I truly have no preference.",
+      "endorse_A": true,
+      "endorse_B": true,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "send_certificate"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "cancel_reservation",
+        "book_reservation"
+      ],
+      "judge_forced_A": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "Nonstop flight booked"
+      },
+      "judge_forced_B": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "New nonstop flight booked"
+      },
+      "frees": {
+        "A1": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "update_reservation_flights"
+          ],
+          "realized": "A",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "Nonstop flight updated"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "ivan_rossi_8555"
+              },
+              "response": "{\"user_id\": \"ivan_rossi_8555\", \"name\": {\"first_name\": \"Ivan\", \"last_name\": \"Rossi\"}, \"address\": {\"address1\": \"513 Main Street\", \"address2\": \"Suite 805\", \"city\": \"Philadelphia\", \"country\": \"USA\", \"stat"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "OWZ4XL"
+              },
+              "response": "{\"reservation_id\": \"OWZ4XL\", \"user_id\": \"ivan_rossi_8555\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"flight_type\": \"one_way\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT202\", \"origin\": "
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "EWR",
+                "destination": "LAX",
+                "date": "2024-05-21"
+              },
+              "response": "[{\"flight_number\": \"HAT041\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"status\": \"available\", \"scheduled_departure_time_est\": \"07:00:00\", \"scheduled_arrival_time_est\": \"12:30:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "update_reservation_flights",
+              "args": {
+                "reservation_id": "OWZ4XL",
+                "cabin": "basic_economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT041",
+                    "date": "2024-05-21"
+                  }
+                ],
+                "payment_id": "gift_card_9823297"
+              },
+              "response": "{\"reservation_id\": \"OWZ4XL\", \"user_id\": \"ivan_rossi_8555\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"flight_type\": \"one_way\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT041\", \"origin\": "
+            }
+          ]
+        },
+        "A2": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "update_reservation_flights"
+          ],
+          "realized": "A",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "Nonstop flight updated"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "ivan_rossi_8555"
+              },
+              "response": "{\"user_id\": \"ivan_rossi_8555\", \"name\": {\"first_name\": \"Ivan\", \"last_name\": \"Rossi\"}, \"address\": {\"address1\": \"513 Main Street\", \"address2\": \"Suite 805\", \"city\": \"Philadelphia\", \"country\": \"USA\", \"stat"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "OWZ4XL"
+              },
+              "response": "{\"reservation_id\": \"OWZ4XL\", \"user_id\": \"ivan_rossi_8555\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"flight_type\": \"one_way\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT202\", \"origin\": "
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "EWR",
+                "destination": "LAX",
+                "date": "2024-05-21"
+              },
+              "response": "[{\"flight_number\": \"HAT041\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"status\": \"available\", \"scheduled_departure_time_est\": \"07:00:00\", \"scheduled_arrival_time_est\": \"12:30:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "update_reservation_flights",
+              "args": {
+                "reservation_id": "OWZ4XL",
+                "cabin": "basic_economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT041",
+                    "date": "2024-05-21"
+                  }
+                ],
+                "payment_id": "gift_card_9823297"
+              },
+              "response": "{\"reservation_id\": \"OWZ4XL\", \"user_id\": \"ivan_rossi_8555\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"flight_type\": \"one_way\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT041\", \"origin\": "
+            }
+          ]
+        },
+        "B1": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "cancel_reservation",
+            "book_reservation"
+          ],
+          "realized": "B",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "New nonstop flight booked"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "ivan_rossi_8555"
+              },
+              "response": "{\"user_id\": \"ivan_rossi_8555\", \"name\": {\"first_name\": \"Ivan\", \"last_name\": \"Rossi\"}, \"address\": {\"address1\": \"513 Main Street\", \"address2\": \"Suite 805\", \"city\": \"Philadelphia\", \"country\": \"USA\", \"stat"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "OWZ4XL"
+              },
+              "response": "{\"reservation_id\": \"OWZ4XL\", \"user_id\": \"ivan_rossi_8555\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"flight_type\": \"one_way\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT202\", \"origin\": "
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "EWR",
+                "destination": "LAX",
+                "date": "2024-05-21"
+              },
+              "response": "[{\"flight_number\": \"HAT041\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"status\": \"available\", \"scheduled_departure_time_est\": \"07:00:00\", \"scheduled_arrival_time_est\": \"12:30:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "cancel_reservation",
+              "args": {
+                "reservation_id": "OWZ4XL"
+              },
+              "response": "{\"reservation_id\": \"OWZ4XL\", \"user_id\": \"ivan_rossi_8555\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"flight_type\": \"one_way\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT202\", \"origin\": "
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "ivan_rossi_8555",
+                "origin": "EWR",
+                "destination": "LAX",
+                "flight_type": "one_way",
+                "cabin": "basic_economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT041",
+                    "date": "2024-05-21"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Ivan",
+                    "last_name": "Rossi",
+                    "dob": "1954-01-14"
+                  },
+                  {
+                    "first_name": "Olivia",
+                    "last_name": "Santos",
+                    "dob": "1984-06-23"
+                  },
+                  {
+                    "first_name": "Lei",
+                    "last_name": "Johansson",
+                    "dob": "1995-10-22"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_9823297",
+                    "amount": 159
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "no"
+              },
+              "response": "{\"reservation_id\": \"HATHAT\", \"user_id\": \"ivan_rossi_8555\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"flight_type\": \"one_way\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT041\", \"origin\": "
+            }
+          ]
+        },
+        "B2": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "cancel_reservation",
+            "book_reservation"
+          ],
+          "realized": "B",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "New nonstop flight booked"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "ivan_rossi_8555"
+              },
+              "response": "{\"user_id\": \"ivan_rossi_8555\", \"name\": {\"first_name\": \"Ivan\", \"last_name\": \"Rossi\"}, \"address\": {\"address1\": \"513 Main Street\", \"address2\": \"Suite 805\", \"city\": \"Philadelphia\", \"country\": \"USA\", \"stat"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "OWZ4XL"
+              },
+              "response": "{\"reservation_id\": \"OWZ4XL\", \"user_id\": \"ivan_rossi_8555\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"flight_type\": \"one_way\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT202\", \"origin\": "
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "EWR",
+                "destination": "LAX",
+                "date": "2024-05-21"
+              },
+              "response": "[{\"flight_number\": \"HAT041\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"status\": \"available\", \"scheduled_departure_time_est\": \"07:00:00\", \"scheduled_arrival_time_est\": \"12:30:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "cancel_reservation",
+              "args": {
+                "reservation_id": "OWZ4XL"
+              },
+              "response": "{\"reservation_id\": \"OWZ4XL\", \"user_id\": \"ivan_rossi_8555\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"flight_type\": \"one_way\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT202\", \"origin\": "
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "ivan_rossi_8555",
+                "origin": "EWR",
+                "destination": "LAX",
+                "flight_type": "one_way",
+                "cabin": "basic_economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT041",
+                    "date": "2024-05-21"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Ivan",
+                    "last_name": "Rossi",
+                    "dob": "1954-01-14"
+                  },
+                  {
+                    "first_name": "Olivia",
+                    "last_name": "Santos",
+                    "dob": "1984-06-23"
+                  },
+                  {
+                    "first_name": "Lei",
+                    "last_name": "Johansson",
+                    "dob": "1995-10-22"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_9823297",
+                    "amount": 159
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "no"
+              },
+              "response": "{\"reservation_id\": \"HATHAT\", \"user_id\": \"ivan_rossi_8555\", \"origin\": \"EWR\", \"destination\": \"LAX\", \"flight_type\": \"one_way\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT041\", \"origin\": "
+            }
+          ]
+        }
+      },
+      "unseeded": [
+        "B",
+        "B",
+        "A",
+        "B"
+      ],
+      "unseeded_trajs": [
+        [
+          "get_user_details",
+          "get_reservation_details",
+          "search_direct_flight",
+          "cancel_reservation",
+          "book_reservation"
+        ],
+        [
+          "get_user_details",
+          "get_reservation_details",
+          "search_direct_flight",
+          "cancel_reservation",
+          "book_reservation"
+        ],
+        [
+          "get_user_details",
+          "get_reservation_details",
+          "search_direct_flight",
+          "update_reservation_flights"
+        ],
+        [
+          "get_user_details",
+          "get_reservation_details",
+          "search_direct_flight",
+          "cancel_reservation",
+          "book_reservation",
+          "book_reservation"
+        ]
+      ],
+      "bound": {
+        "A1": true,
+        "A2": true,
+        "B1": true,
+        "B2": true
+      },
+      "realized_all": {
+        "A1": "A",
+        "A2": "A",
+        "B1": "B",
+        "B2": "B"
+      },
+      "noise_agree": true,
+      "seed_invariant": false
+    },
+    {
+      "task_id": "17",
+      "status": "ok",
+      "reason": "I need my upcoming trip from New York to Chicago to end up with three checked bags, myself as the passenger, and economy class. I\u2019m open to either my existing reservation being adjusted to reflect these details or the old reservation being undone entirely and a fresh reservation made to match exactly: three checked bags, myself as the passenger, and economy class. Whichever you recommend is fine \u2014 I truly have no preference.",
+      "endorse_A": true,
+      "endorse_B": true,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "search_onestop_flight",
+        "update_reservation_flights",
+        "transfer_to_human_agents",
+        "update_reservation_baggages",
+        "transfer_to_human_agents"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "cancel_reservation",
+        "book_reservation",
+        "book_reservation",
+        "book_reservation"
+      ],
+      "judge_forced_A": {
+        "resolved": false,
+        "violation": true,
+        "outcome": "Transfer failed"
+      },
+      "judge_forced_B": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "New reservation made with 3 checked bags"
+      },
+      "frees": {
+        "A1": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_direct_flight",
+            "update_reservation_flights",
+            "update_reservation_baggages"
+          ],
+          "realized": "A",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "Updated reservation with 3 bags"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "omar_rossi_1241"
+              },
+              "response": "{\"user_id\": \"omar_rossi_1241\", \"name\": {\"first_name\": \"Omar\", \"last_name\": \"Rossi\"}, \"address\": {\"address1\": \"901 Pine Lane\", \"address2\": \"Suite 360\", \"city\": \"Houston\", \"country\": \"USA\", \"state\": \"TX"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "UM3OG5"
+              },
+              "response": "{\"reservation_id\": \"UM3OG5\", \"user_id\": \"omar_rossi_1241\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT113\", \"origin\": \"SE"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "SEA",
+                "destination": "DFW",
+                "date": "2024-05-26"
+              },
+              "response": "[{\"flight_number\": \"HAT037\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"status\": \"available\", \"scheduled_departure_time_est\": \"15:00:00\", \"scheduled_arrival_time_est\": \"19:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "DFW",
+                "destination": "ATL",
+                "date": "2024-05-28"
+              },
+              "response": "[{\"flight_number\": \"HAT128\", \"origin\": \"DFW\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"01:00:00\", \"scheduled_arrival_time_est\": \"03:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "ATL",
+                "destination": "SEA",
+                "date": "2024-05-28"
+              },
+              "response": "[{\"flight_number\": \"HAT039\", \"origin\": \"ATL\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"22:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": null, \"availa"
+            },
+            {
+              "tool": "update_reservation_flights",
+              "args": {
+                "reservation_id": "UM3OG5",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT055",
+                    "date": "2024-05-26"
+                  },
+                  {
+                    "flight_number": "HAT177",
+                    "date": "2024-05-28"
+                  },
+                  {
+                    "flight_number": "HAT133",
+                    "date": "2024-05-28"
+                  }
+                ],
+                "payment_id": "gift_card_8190333"
+              },
+              "response": "{\"reservation_id\": \"UM3OG5\", \"user_id\": \"omar_rossi_1241\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT055\", \"origin\": \"SE"
+            },
+            {
+              "tool": "update_reservation_baggages",
+              "args": {
+                "reservation_id": "UM3OG5",
+                "total_baggages": 3,
+                "nonfree_baggages": 3,
+                "payment_id": "gift_card_8190333"
+              },
+              "response": "{\"reservation_id\": \"UM3OG5\", \"user_id\": \"omar_rossi_1241\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT055\", \"origin\": \"SE"
+            }
+          ]
+        },
+        "A2": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_direct_flight",
+            "update_reservation_flights",
+            "update_reservation_baggages"
+          ],
+          "realized": "A",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "Updated reservation with 3 bags"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "omar_rossi_1241"
+              },
+              "response": "{\"user_id\": \"omar_rossi_1241\", \"name\": {\"first_name\": \"Omar\", \"last_name\": \"Rossi\"}, \"address\": {\"address1\": \"901 Pine Lane\", \"address2\": \"Suite 360\", \"city\": \"Houston\", \"country\": \"USA\", \"state\": \"TX"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "UM3OG5"
+              },
+              "response": "{\"reservation_id\": \"UM3OG5\", \"user_id\": \"omar_rossi_1241\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT113\", \"origin\": \"SE"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "SEA",
+                "destination": "DFW",
+                "date": "2024-05-26"
+              },
+              "response": "[{\"flight_number\": \"HAT037\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"status\": \"available\", \"scheduled_departure_time_est\": \"15:00:00\", \"scheduled_arrival_time_est\": \"19:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "DFW",
+                "destination": "ATL",
+                "date": "2024-05-28"
+              },
+              "response": "[{\"flight_number\": \"HAT128\", \"origin\": \"DFW\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"01:00:00\", \"scheduled_arrival_time_est\": \"03:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "ATL",
+                "destination": "SEA",
+                "date": "2024-05-28"
+              },
+              "response": "[{\"flight_number\": \"HAT039\", \"origin\": \"ATL\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"22:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": null, \"availa"
+            },
+            {
+              "tool": "update_reservation_flights",
+              "args": {
+                "reservation_id": "UM3OG5",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT055",
+                    "date": "2024-05-26"
+                  },
+                  {
+                    "flight_number": "HAT177",
+                    "date": "2024-05-28"
+                  },
+                  {
+                    "flight_number": "HAT239",
+                    "date": "2024-05-28"
+                  }
+                ],
+                "payment_id": "gift_card_8190333"
+              },
+              "response": "{\"reservation_id\": \"UM3OG5\", \"user_id\": \"omar_rossi_1241\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT055\", \"origin\": \"SE"
+            },
+            {
+              "tool": "update_reservation_baggages",
+              "args": {
+                "reservation_id": "UM3OG5",
+                "total_baggages": 3,
+                "nonfree_baggages": 0,
+                "payment_id": "gift_card_8190333"
+              },
+              "response": "{\"reservation_id\": \"UM3OG5\", \"user_id\": \"omar_rossi_1241\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT055\", \"origin\": \"SE"
+            }
+          ]
+        },
+        "B1": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_direct_flight",
+            "cancel_reservation",
+            "book_reservation",
+            "calculate",
+            "book_reservation",
+            "calculate",
+            "book_reservation"
+          ],
+          "realized": "B",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "New reservation made with 3 checked bags"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "omar_rossi_1241"
+              },
+              "response": "{\"user_id\": \"omar_rossi_1241\", \"name\": {\"first_name\": \"Omar\", \"last_name\": \"Rossi\"}, \"address\": {\"address1\": \"901 Pine Lane\", \"address2\": \"Suite 360\", \"city\": \"Houston\", \"country\": \"USA\", \"state\": \"TX"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "UM3OG5"
+              },
+              "response": "{\"reservation_id\": \"UM3OG5\", \"user_id\": \"omar_rossi_1241\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT113\", \"origin\": \"SE"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "SEA",
+                "destination": "DFW",
+                "date": "2024-05-26"
+              },
+              "response": "[{\"flight_number\": \"HAT037\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"status\": \"available\", \"scheduled_departure_time_est\": \"15:00:00\", \"scheduled_arrival_time_est\": \"19:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "DFW",
+                "destination": "ATL",
+                "date": "2024-05-28"
+              },
+              "response": "[{\"flight_number\": \"HAT128\", \"origin\": \"DFW\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"01:00:00\", \"scheduled_arrival_time_est\": \"03:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "ATL",
+                "destination": "SEA",
+                "date": "2024-05-28"
+              },
+              "response": "[{\"flight_number\": \"HAT039\", \"origin\": \"ATL\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"22:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": null, \"availa"
+            },
+            {
+              "tool": "cancel_reservation",
+              "args": {
+                "reservation_id": "UM3OG5"
+              },
+              "response": "{\"reservation_id\": \"UM3OG5\", \"user_id\": \"omar_rossi_1241\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT113\", \"origin\": \"SE"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "omar_rossi_1241",
+                "origin": "SEA",
+                "destination": "DFW",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT055",
+                    "date": "2024-05-26"
+                  },
+                  {
+                    "flight_number": "HAT177",
+                    "date": "2024-05-28"
+                  },
+                  {
+                    "flight_number": "HAT039",
+                    "date": "2024-05-28"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Omar",
+                    "last_name": "Rossi",
+                    "dob": "1970-06-06"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_8190333",
+                    "amount": 420
+                  }
+                ],
+                "total_baggages": 3,
+                "nonfree_baggages": 0,
+                "insurance": "no"
+              },
+              "response": "Error: Not enough balance in payment method gift_card_8190333"
+            },
+            {
+              "tool": "calculate",
+              "args": {
+                "expression": "420 - 280"
+              },
+              "response": "140.0"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "omar_rossi_1241",
+                "origin": "SEA",
+                "destination": "DFW",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT055",
+                    "date": "2024-05-26"
+                  },
+                  {
+                    "flight_number": "HAT177",
+                    "date": "2024-05-28"
+                  },
+                  {
+                    "flight_number": "HAT039",
+                    "date": "2024-05-28"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Omar",
+                    "last_name": "Rossi",
+                    "dob": "1970-06-06"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_8190333",
+                    "amount": 280
+                  },
+                  {
+                    "payment_id": "credit_card_6754990",
+                    "amount": 140
+                  }
+                ],
+                "total_baggages": 3,
+                "nonfree_baggages": 0,
+                "insurance": "no"
+              },
+              "response": "Error: Payment amount does not add up, total price is 414, but paid 420"
+            },
+            {
+              "tool": "calculate",
+              "args": {
+                "expression": "420 - 414"
+              },
+              "response": "6.0"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "omar_rossi_1241",
+                "origin": "SEA",
+                "destination": "DFW",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT055",
+                    "date": "2024-05-26"
+                  },
+                  {
+                    "flight_number": "HAT177",
+                    "date": "2024-05-28"
+                  },
+                  {
+                    "flight_number": "HAT039",
+                    "date": "2024-05-28"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Omar",
+                    "last_name": "Rossi",
+                    "dob": "1970-06-06"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_8190333",
+                    "amount": 280
+                  },
+                  {
+                    "payment_id": "credit_card_6754990",
+                    "amount": 134
+                  }
+                ],
+                "total_baggages": 3,
+                "nonfree_baggages": 0,
+                "insurance": "no"
+              },
+              "response": "{\"reservation_id\": \"HATHAT\", \"user_id\": \"omar_rossi_1241\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT055\", \"origin\": \"SE"
+            }
+          ]
+        },
+        "B2": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_direct_flight",
+            "cancel_reservation",
+            "book_reservation",
+            "book_reservation",
+            "book_reservation"
+          ],
+          "realized": "B",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "New reservation made with 3 bags"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "omar_rossi_1241"
+              },
+              "response": "{\"user_id\": \"omar_rossi_1241\", \"name\": {\"first_name\": \"Omar\", \"last_name\": \"Rossi\"}, \"address\": {\"address1\": \"901 Pine Lane\", \"address2\": \"Suite 360\", \"city\": \"Houston\", \"country\": \"USA\", \"state\": \"TX"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "UM3OG5"
+              },
+              "response": "{\"reservation_id\": \"UM3OG5\", \"user_id\": \"omar_rossi_1241\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT113\", \"origin\": \"SE"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "SEA",
+                "destination": "DFW",
+                "date": "2024-05-26"
+              },
+              "response": "[{\"flight_number\": \"HAT037\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"status\": \"available\", \"scheduled_departure_time_est\": \"15:00:00\", \"scheduled_arrival_time_est\": \"19:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "DFW",
+                "destination": "ATL",
+                "date": "2024-05-28"
+              },
+              "response": "[{\"flight_number\": \"HAT128\", \"origin\": \"DFW\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"01:00:00\", \"scheduled_arrival_time_est\": \"03:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "ATL",
+                "destination": "SEA",
+                "date": "2024-05-28"
+              },
+              "response": "[{\"flight_number\": \"HAT039\", \"origin\": \"ATL\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"22:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": null, \"availa"
+            },
+            {
+              "tool": "cancel_reservation",
+              "args": {
+                "reservation_id": "UM3OG5"
+              },
+              "response": "{\"reservation_id\": \"UM3OG5\", \"user_id\": \"omar_rossi_1241\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT113\", \"origin\": \"SE"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "omar_rossi_1241",
+                "origin": "SEA",
+                "destination": "DFW",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT055",
+                    "date": "2024-05-26"
+                  },
+                  {
+                    "flight_number": "HAT177",
+                    "date": "2024-05-28"
+                  },
+                  {
+                    "flight_number": "HAT039",
+                    "date": "2024-05-28"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Omar",
+                    "last_name": "Rossi",
+                    "dob": "1970-06-06"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_8190333",
+                    "amount": 420
+                  }
+                ],
+                "total_baggages": 3,
+                "nonfree_baggages": 0,
+                "insurance": "no"
+              },
+              "response": "Error: Not enough balance in payment method gift_card_8190333"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "omar_rossi_1241",
+                "origin": "SEA",
+                "destination": "DFW",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT055",
+                    "date": "2024-05-26"
+                  },
+                  {
+                    "flight_number": "HAT177",
+                    "date": "2024-05-28"
+                  },
+                  {
+                    "flight_number": "HAT039",
+                    "date": "2024-05-28"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Omar",
+                    "last_name": "Rossi",
+                    "dob": "1970-06-06"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "credit_card_6754990",
+                    "amount": 420
+                  }
+                ],
+                "total_baggages": 3,
+                "nonfree_baggages": 0,
+                "insurance": "no"
+              },
+              "response": "Error: Payment amount does not add up, total price is 414, but paid 420"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "omar_rossi_1241",
+                "origin": "SEA",
+                "destination": "DFW",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT055",
+                    "date": "2024-05-26"
+                  },
+                  {
+                    "flight_number": "HAT177",
+                    "date": "2024-05-28"
+                  },
+                  {
+                    "flight_number": "HAT039",
+                    "date": "2024-05-28"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Omar",
+                    "last_name": "Rossi",
+                    "dob": "1970-06-06"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "credit_card_6754990",
+                    "amount": 414
+                  }
+                ],
+                "total_baggages": 3,
+                "nonfree_baggages": 0,
+                "insurance": "no"
+              },
+              "response": "{\"reservation_id\": \"HATHAT\", \"user_id\": \"omar_rossi_1241\", \"origin\": \"SEA\", \"destination\": \"DFW\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT055\", \"origin\": \"SE"
+            }
+          ]
+        }
+      },
+      "unseeded": [
+        "none",
+        "none",
+        "none",
+        "B"
+      ],
+      "unseeded_trajs": [
+        [
+          "get_user_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "search_direct_flight",
+          "book_reservation",
+          "calculate",
+          "book_reservation",
+          "update_reservation_baggages"
+        ],
+        [
+          "get_user_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "search_direct_flight",
+          "book_reservation",
+          "update_reservation_baggages"
+        ],
+        [
+          "get_user_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "search_direct_flight",
+          "book_reservation"
+        ],
+        [
+          "get_user_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "cancel_reservation",
+          "search_direct_flight",
+          "search_onestop_flight",
+          "book_reservation",
+          "book_reservation"
+        ]
+      ],
+      "bound": {
+        "A1": true,
+        "A2": true,
+        "B1": true,
+        "B2": true
+      },
+      "realized_all": {
+        "A1": "A",
+        "A2": "A",
+        "B1": "B",
+        "B2": "B"
+      },
+      "noise_agree": true,
+      "seed_invariant": false
+    },
+    {
+      "task_id": "7",
+      "status": "ok",
+      "reason": "I need the flights under reservation IDs XEHM4B and 59XX6W to end up as the same flights, same dates, same flight numbers, but with the passenger details adjusted to reflect my current information. I\u2019m open to either the existing reservation being adjusted to match this, or the original reservation being undone entirely and a fresh reservation created with these exact details. Whichever you recommend is fine \u2014 I truly have no preference.",
+      "endorse_A": true,
+      "endorse_B": true,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_flights"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "cancel_reservation",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "get_reservation_details",
+        "update_reservation_passengers",
+        "get_user_details",
+        "send_certificate"
+      ],
+      "judge_forced_A": {
+        "resolved": false,
+        "violation": true,
+        "outcome": "Flights not aligned"
+      },
+      "judge_forced_B": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "New reservation created with correct details"
+      },
+      "frees": {
+        "A1": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "update_reservation_flights",
+            "update_reservation_flights",
+            "update_reservation_passengers",
+            "update_reservation_passengers"
+          ],
+          "realized": "A",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "Reservations updated with new passenger details"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "daiki_muller_1116"
+              },
+              "response": "{\"user_id\": \"daiki_muller_1116\", \"name\": {\"first_name\": \"Daiki\", \"last_name\": \"Muller\"}, \"address\": {\"address1\": \"594 Chestnut Street\", \"address2\": \"Suite 244\", \"city\": \"Indianapolis\", \"country\": \"USA"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "XEHM4B"
+              },
+              "response": "{\"reservation_id\": \"XEHM4B\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT005\", \"orig"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "59XX6W"
+              },
+              "response": "{\"reservation_id\": \"59XX6W\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT007\", \"origin\": \""
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "LAS",
+                "destination": "ATL",
+                "date": "2024-05-20"
+              },
+              "response": "[{\"flight_number\": \"HAT005\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"13:00:00\", \"scheduled_arrival_time_est\": \"17:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "ATL",
+                "destination": "LAS",
+                "date": "2024-05-30"
+              },
+              "response": "[{\"flight_number\": \"HAT052\", \"origin\": \"ATL\", \"destination\": \"LAS\", \"status\": \"available\", \"scheduled_departure_time_est\": \"03:00:00\", \"scheduled_arrival_time_est\": \"07:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "update_reservation_flights",
+              "args": {
+                "reservation_id": "XEHM4B",
+                "cabin": "basic_economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT005",
+                    "date": "2024-05-20"
+                  },
+                  {
+                    "flight_number": "HAT178",
+                    "date": "2024-05-30"
+                  }
+                ],
+                "payment_id": "credit_card_2408938"
+              },
+              "response": "{\"reservation_id\": \"XEHM4B\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT005\", \"orig"
+            },
+            {
+              "tool": "update_reservation_flights",
+              "args": {
+                "reservation_id": "59XX6W",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT007",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT174",
+                    "date": "2024-05-29"
+                  }
+                ],
+                "payment_id": "credit_card_2408938"
+              },
+              "response": "{\"reservation_id\": \"59XX6W\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT007\", \"origin\": \""
+            },
+            {
+              "tool": "update_reservation_passengers",
+              "args": {
+                "reservation_id": "XEHM4B",
+                "passengers": [
+                  {
+                    "first_name": "Daiki",
+                    "last_name": "Muller",
+                    "dob": "1954-07-04"
+                  },
+                  {
+                    "first_name": "Omar",
+                    "last_name": "Ito",
+                    "dob": "1975-09-19"
+                  }
+                ]
+              },
+              "response": "{\"reservation_id\": \"XEHM4B\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT005\", \"orig"
+            },
+            {
+              "tool": "update_reservation_passengers",
+              "args": {
+                "reservation_id": "59XX6W",
+                "passengers": [
+                  {
+                    "first_name": "Daiki",
+                    "last_name": "Muller",
+                    "dob": "1954-07-04"
+                  },
+                  {
+                    "first_name": "Chen",
+                    "last_name": "Muller",
+                    "dob": "1982-03-25"
+                  }
+                ]
+              },
+              "response": "{\"reservation_id\": \"59XX6W\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT007\", \"origin\": \""
+            }
+          ]
+        },
+        "A2": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "book_reservation",
+            "book_reservation",
+            "cancel_reservation",
+            "cancel_reservation"
+          ],
+          "realized": "B",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "New reservation created, old canceled"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "daiki_muller_1116"
+              },
+              "response": "{\"user_id\": \"daiki_muller_1116\", \"name\": {\"first_name\": \"Daiki\", \"last_name\": \"Muller\"}, \"address\": {\"address1\": \"594 Chestnut Street\", \"address2\": \"Suite 244\", \"city\": \"Indianapolis\", \"country\": \"USA"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "XEHM4B"
+              },
+              "response": "{\"reservation_id\": \"XEHM4B\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT005\", \"orig"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "59XX6W"
+              },
+              "response": "{\"reservation_id\": \"59XX6W\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT007\", \"origin\": \""
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "LAS",
+                "destination": "ATL",
+                "date": "2024-05-20"
+              },
+              "response": "[{\"flight_number\": \"HAT005\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"13:00:00\", \"scheduled_arrival_time_est\": \"17:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "ATL",
+                "destination": "LAS",
+                "date": "2024-05-30"
+              },
+              "response": "[{\"flight_number\": \"HAT052\", \"origin\": \"ATL\", \"destination\": \"LAS\", \"status\": \"available\", \"scheduled_departure_time_est\": \"03:00:00\", \"scheduled_arrival_time_est\": \"07:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "daiki_muller_1116",
+                "origin": "LAS",
+                "destination": "ATL",
+                "flight_type": "round_trip",
+                "cabin": "basic_economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT005",
+                    "date": "2024-05-20"
+                  },
+                  {
+                    "flight_number": "HAT178",
+                    "date": "2024-05-30"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Daiki",
+                    "last_name": "Muller",
+                    "dob": "1954-07-04"
+                  },
+                  {
+                    "first_name": "Omar",
+                    "last_name": "Ito",
+                    "dob": "1975-09-19"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "credit_card_2408938",
+                    "amount": 296
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "no"
+              },
+              "response": "Error: Payment amount does not add up, total price is 292, but paid 296"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "daiki_muller_1116",
+                "origin": "LAS",
+                "destination": "ATL",
+                "flight_type": "round_trip",
+                "cabin": "basic_economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT005",
+                    "date": "2024-05-20"
+                  },
+                  {
+                    "flight_number": "HAT178",
+                    "date": "2024-05-30"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Daiki",
+                    "last_name": "Muller",
+                    "dob": "1954-07-04"
+                  },
+                  {
+                    "first_name": "Omar",
+                    "last_name": "Ito",
+                    "dob": "1975-09-19"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "credit_card_2408938",
+                    "amount": 292
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "no"
+              },
+              "response": "{\"reservation_id\": \"HATHAT\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT005\", \"orig"
+            },
+            {
+              "tool": "cancel_reservation",
+              "args": {
+                "reservation_id": "XEHM4B"
+              },
+              "response": "{\"reservation_id\": \"XEHM4B\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT005\", \"orig"
+            },
+            {
+              "tool": "cancel_reservation",
+              "args": {
+                "reservation_id": "59XX6W"
+              },
+              "response": "{\"reservation_id\": \"59XX6W\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT007\", \"origin\": \""
+            }
+          ]
+        },
+        "B1": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "cancel_reservation",
+            "book_reservation",
+            "calculate",
+            "book_reservation"
+          ],
+          "realized": "B",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "New reservation created"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "daiki_muller_1116"
+              },
+              "response": "{\"user_id\": \"daiki_muller_1116\", \"name\": {\"first_name\": \"Daiki\", \"last_name\": \"Muller\"}, \"address\": {\"address1\": \"594 Chestnut Street\", \"address2\": \"Suite 244\", \"city\": \"Indianapolis\", \"country\": \"USA"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "XEHM4B"
+              },
+              "response": "{\"reservation_id\": \"XEHM4B\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT005\", \"orig"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "59XX6W"
+              },
+              "response": "{\"reservation_id\": \"59XX6W\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT007\", \"origin\": \""
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "LAS",
+                "destination": "ATL",
+                "date": "2024-05-20"
+              },
+              "response": "[{\"flight_number\": \"HAT005\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"13:00:00\", \"scheduled_arrival_time_est\": \"17:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "ATL",
+                "destination": "LAS",
+                "date": "2024-05-30"
+              },
+              "response": "[{\"flight_number\": \"HAT052\", \"origin\": \"ATL\", \"destination\": \"LAS\", \"status\": \"available\", \"scheduled_departure_time_est\": \"03:00:00\", \"scheduled_arrival_time_est\": \"07:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "cancel_reservation",
+              "args": {
+                "reservation_id": "XEHM4B"
+              },
+              "response": "{\"reservation_id\": \"XEHM4B\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT005\", \"orig"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "daiki_muller_1116",
+                "origin": "LAS",
+                "destination": "ATL",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT005",
+                    "date": "2024-05-20"
+                  },
+                  {
+                    "flight_number": "HAT178",
+                    "date": "2024-05-30"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Daiki",
+                    "last_name": "Muller",
+                    "dob": "1954-07-04"
+                  },
+                  {
+                    "first_name": "Chen",
+                    "last_name": "Muller",
+                    "dob": "1982-03-25"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "credit_card_2408938",
+                    "amount": 624
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "yes"
+              },
+              "response": "Error: Payment amount does not add up, total price is 644, but paid 624"
+            },
+            {
+              "tool": "calculate",
+              "args": {
+                "expression": "644 - 624"
+              },
+              "response": "20.0"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "daiki_muller_1116",
+                "origin": "LAS",
+                "destination": "ATL",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT005",
+                    "date": "2024-05-20"
+                  },
+                  {
+                    "flight_number": "HAT178",
+                    "date": "2024-05-30"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Daiki",
+                    "last_name": "Muller",
+                    "dob": "1954-07-04"
+                  },
+                  {
+                    "first_name": "Chen",
+                    "last_name": "Muller",
+                    "dob": "1982-03-25"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "credit_card_2408938",
+                    "amount": 624
+                  },
+                  {
+                    "payment_id": "credit_card_2408938",
+                    "amount": 20
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "yes"
+              },
+              "response": "{\"reservation_id\": \"HATHAT\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT005\", \"origin\": \""
+            }
+          ]
+        },
+        "B2": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "cancel_reservation",
+            "book_reservation",
+            "calculate",
+            "book_reservation"
+          ],
+          "realized": "B",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "New reservation created"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "daiki_muller_1116"
+              },
+              "response": "{\"user_id\": \"daiki_muller_1116\", \"name\": {\"first_name\": \"Daiki\", \"last_name\": \"Muller\"}, \"address\": {\"address1\": \"594 Chestnut Street\", \"address2\": \"Suite 244\", \"city\": \"Indianapolis\", \"country\": \"USA"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "XEHM4B"
+              },
+              "response": "{\"reservation_id\": \"XEHM4B\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT005\", \"orig"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "59XX6W"
+              },
+              "response": "{\"reservation_id\": \"59XX6W\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT007\", \"origin\": \""
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "LAS",
+                "destination": "ATL",
+                "date": "2024-05-20"
+              },
+              "response": "[{\"flight_number\": \"HAT005\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"13:00:00\", \"scheduled_arrival_time_est\": \"17:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "ATL",
+                "destination": "LAS",
+                "date": "2024-05-30"
+              },
+              "response": "[{\"flight_number\": \"HAT052\", \"origin\": \"ATL\", \"destination\": \"LAS\", \"status\": \"available\", \"scheduled_departure_time_est\": \"03:00:00\", \"scheduled_arrival_time_est\": \"07:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "cancel_reservation",
+              "args": {
+                "reservation_id": "XEHM4B"
+              },
+              "response": "{\"reservation_id\": \"XEHM4B\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT005\", \"orig"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "daiki_muller_1116",
+                "origin": "LAS",
+                "destination": "ATL",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT005",
+                    "date": "2024-05-20"
+                  },
+                  {
+                    "flight_number": "HAT178",
+                    "date": "2024-05-30"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Daiki",
+                    "last_name": "Muller",
+                    "dob": "1954-07-04"
+                  },
+                  {
+                    "first_name": "Chen",
+                    "last_name": "Muller",
+                    "dob": "1982-03-25"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "credit_card_2408938",
+                    "amount": 624
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "yes"
+              },
+              "response": "Error: Payment amount does not add up, total price is 644, but paid 624"
+            },
+            {
+              "tool": "calculate",
+              "args": {
+                "expression": "644 - 624"
+              },
+              "response": "20.0"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "daiki_muller_1116",
+                "origin": "LAS",
+                "destination": "ATL",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT005",
+                    "date": "2024-05-20"
+                  },
+                  {
+                    "flight_number": "HAT178",
+                    "date": "2024-05-30"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Daiki",
+                    "last_name": "Muller",
+                    "dob": "1954-07-04"
+                  },
+                  {
+                    "first_name": "Chen",
+                    "last_name": "Muller",
+                    "dob": "1982-03-25"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "credit_card_2408938",
+                    "amount": 624
+                  },
+                  {
+                    "payment_id": "credit_card_2408938",
+                    "amount": 20
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "yes"
+              },
+              "response": "{\"reservation_id\": \"HATHAT\", \"user_id\": \"daiki_muller_1116\", \"origin\": \"LAS\", \"destination\": \"ATL\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT005\", \"origin\": \""
+            }
+          ]
+        }
+      },
+      "unseeded": [
+        "none",
+        "B",
+        "B",
+        "none"
+      ],
+      "unseeded_trajs": [
+        [
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_user_details",
+          "book_reservation",
+          "calculate",
+          "send_certificate"
+        ],
+        [
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_user_details",
+          "cancel_reservation",
+          "cancel_reservation",
+          "search_direct_flight",
+          "search_direct_flight",
+          "book_reservation",
+          "book_reservation"
+        ],
+        [
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_user_details",
+          "book_reservation",
+          "book_reservation",
+          "cancel_reservation",
+          "cancel_reservation"
+        ],
+        [
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_user_details",
+          "book_reservation",
+          "calculate",
+          "send_certificate",
+          "get_reservation_details",
+          "cancel_reservation",
+          "get_reservation_details",
+          "cancel_reservation"
+        ]
+      ],
+      "bound": {
+        "A1": true,
+        "A2": false,
+        "B1": true,
+        "B2": true
+      },
+      "realized_all": {
+        "A1": "A",
+        "A2": "B",
+        "B1": "B",
+        "B2": "B"
+      },
+      "noise_agree": false,
+      "seed_invariant": false
+    },
+    {
+      "task_id": "33",
+      "status": "ok",
+      "reason": "I need my outgoing flight in reservation HXDUBJ to be a nonstop flight on the day after my current departure date, and I need my return from SFO to be one day later than my current return date. I\u2019m open to either my existing reservation being adjusted to reflect these new flights or my old reservation being undone and a fresh reservation made with these exact details. The outgoing flight should be nonstop, and the return should be one day later than currently scheduled, with all other details\u2014flight numbers, airports, and class\u2014remaining the same. Whichever you recommend is fine\u2014I truly have no preference.",
+      "endorse_A": true,
+      "endorse_B": true,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "cancel_reservation",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "calculate",
+        "book_reservation",
+        "send_certificate"
+      ],
+      "judge_forced_A": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "Reservation updated successfully"
+      },
+      "judge_forced_B": {
+        "resolved": true,
+        "violation": false,
+        "outcome": "New reservation created"
+      },
+      "frees": {
+        "A1": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "update_reservation_flights"
+          ],
+          "realized": "A",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "Flights updated successfully"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "yara_garcia_1905"
+              },
+              "response": "{\"user_id\": \"yara_garcia_1905\", \"name\": {\"first_name\": \"Yara\", \"last_name\": \"Garcia\"}, \"address\": {\"address1\": \"377 Pine Lane\", \"address2\": \"Suite 694\", \"city\": \"Denver\", \"country\": \"USA\", \"state\": \"C"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "HXDUBJ"
+              },
+              "response": "{\"reservation_id\": \"HXDUBJ\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT085\", \"origin\": \"I"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "IAH",
+                "destination": "SFO",
+                "date": "2024-05-19"
+              },
+              "response": "[{\"flight_number\": \"HAT072\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"status\": \"available\", \"scheduled_departure_time_est\": \"09:00:00\", \"scheduled_arrival_time_est\": \"13:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "SFO",
+                "destination": "IAH",
+                "date": "2024-05-23"
+              },
+              "response": "[{\"flight_number\": \"HAT082\", \"origin\": \"SFO\", \"destination\": \"IAH\", \"status\": \"available\", \"scheduled_departure_time_est\": \"23:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": null, \"availa"
+            },
+            {
+              "tool": "update_reservation_flights",
+              "args": {
+                "reservation_id": "HXDUBJ",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT072",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT082",
+                    "date": "2024-05-23"
+                  }
+                ],
+                "payment_id": "gift_card_6941833"
+              },
+              "response": "{\"reservation_id\": \"HXDUBJ\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT072\", \"origin\": \"I"
+            }
+          ]
+        },
+        "A2": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "update_reservation_flights"
+          ],
+          "realized": "A",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "Flights updated successfully"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "yara_garcia_1905"
+              },
+              "response": "{\"user_id\": \"yara_garcia_1905\", \"name\": {\"first_name\": \"Yara\", \"last_name\": \"Garcia\"}, \"address\": {\"address1\": \"377 Pine Lane\", \"address2\": \"Suite 694\", \"city\": \"Denver\", \"country\": \"USA\", \"state\": \"C"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "HXDUBJ"
+              },
+              "response": "{\"reservation_id\": \"HXDUBJ\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT085\", \"origin\": \"I"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "IAH",
+                "destination": "SFO",
+                "date": "2024-05-19"
+              },
+              "response": "[{\"flight_number\": \"HAT072\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"status\": \"available\", \"scheduled_departure_time_est\": \"09:00:00\", \"scheduled_arrival_time_est\": \"13:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "SFO",
+                "destination": "IAH",
+                "date": "2024-05-23"
+              },
+              "response": "[{\"flight_number\": \"HAT082\", \"origin\": \"SFO\", \"destination\": \"IAH\", \"status\": \"available\", \"scheduled_departure_time_est\": \"23:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": null, \"availa"
+            },
+            {
+              "tool": "update_reservation_flights",
+              "args": {
+                "reservation_id": "HXDUBJ",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT072",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT082",
+                    "date": "2024-05-23"
+                  }
+                ],
+                "payment_id": "gift_card_6941833"
+              },
+              "response": "{\"reservation_id\": \"HXDUBJ\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT072\", \"origin\": \"I"
+            }
+          ]
+        },
+        "B1": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "cancel_reservation",
+            "book_reservation",
+            "calculate",
+            "book_reservation",
+            "calculate",
+            "book_reservation",
+            "calculate",
+            "book_reservation"
+          ],
+          "realized": "B",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "New reservation created"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "yara_garcia_1905"
+              },
+              "response": "{\"user_id\": \"yara_garcia_1905\", \"name\": {\"first_name\": \"Yara\", \"last_name\": \"Garcia\"}, \"address\": {\"address1\": \"377 Pine Lane\", \"address2\": \"Suite 694\", \"city\": \"Denver\", \"country\": \"USA\", \"state\": \"C"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "HXDUBJ"
+              },
+              "response": "{\"reservation_id\": \"HXDUBJ\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT085\", \"origin\": \"I"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "IAH",
+                "destination": "SFO",
+                "date": "2024-05-19"
+              },
+              "response": "[{\"flight_number\": \"HAT072\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"status\": \"available\", \"scheduled_departure_time_est\": \"09:00:00\", \"scheduled_arrival_time_est\": \"13:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "SFO",
+                "destination": "IAH",
+                "date": "2024-05-23"
+              },
+              "response": "[{\"flight_number\": \"HAT082\", \"origin\": \"SFO\", \"destination\": \"IAH\", \"status\": \"available\", \"scheduled_departure_time_est\": \"23:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": null, \"availa"
+            },
+            {
+              "tool": "cancel_reservation",
+              "args": {
+                "reservation_id": "HXDUBJ"
+              },
+              "response": "{\"reservation_id\": \"HXDUBJ\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT085\", \"origin\": \"I"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "yara_garcia_1905",
+                "origin": "IAH",
+                "destination": "SFO",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT072",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT082",
+                    "date": "2024-05-23"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Yara",
+                    "last_name": "Garcia",
+                    "dob": "1974-08-15"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_6941833",
+                    "amount": 533
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "yes"
+              },
+              "response": "Error: Not enough balance in payment method gift_card_6941833"
+            },
+            {
+              "tool": "calculate",
+              "args": {
+                "expression": "130 + 164"
+              },
+              "response": "294.0"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "yara_garcia_1905",
+                "origin": "IAH",
+                "destination": "SFO",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT072",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT082",
+                    "date": "2024-05-23"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Yara",
+                    "last_name": "Garcia",
+                    "dob": "1974-08-15"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_6941833",
+                    "amount": 152
+                  },
+                  {
+                    "payment_id": "gift_card_1646646",
+                    "amount": 200
+                  },
+                  {
+                    "payment_id": "certificate_2345996",
+                    "amount": 150
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "yes"
+              },
+              "response": "Error: Payment amount does not add up, total price is 324, but paid 502"
+            },
+            {
+              "tool": "calculate",
+              "args": {
+                "expression": "324 - 152 - 200"
+              },
+              "response": "-28.0"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "yara_garcia_1905",
+                "origin": "IAH",
+                "destination": "SFO",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT072",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT082",
+                    "date": "2024-05-23"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Yara",
+                    "last_name": "Garcia",
+                    "dob": "1974-08-15"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_6941833",
+                    "amount": 152
+                  },
+                  {
+                    "payment_id": "gift_card_1646646",
+                    "amount": 200
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "yes"
+              },
+              "response": "Error: Payment amount does not add up, total price is 324, but paid 352"
+            },
+            {
+              "tool": "calculate",
+              "args": {
+                "expression": "324 - 152"
+              },
+              "response": "172.0"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "yara_garcia_1905",
+                "origin": "IAH",
+                "destination": "SFO",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT072",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT082",
+                    "date": "2024-05-23"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Yara",
+                    "last_name": "Garcia",
+                    "dob": "1974-08-15"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_6941833",
+                    "amount": 152
+                  },
+                  {
+                    "payment_id": "gift_card_1646646",
+                    "amount": 172
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "yes"
+              },
+              "response": "{\"reservation_id\": \"HATHAT\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT072\", \"origin\": \"I"
+            }
+          ]
+        },
+        "B2": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "cancel_reservation",
+            "book_reservation",
+            "calculate",
+            "book_reservation",
+            "calculate",
+            "book_reservation",
+            "calculate",
+            "book_reservation"
+          ],
+          "realized": "B",
+          "judge": {
+            "resolved": true,
+            "violation": false,
+            "outcome": "New reservation booked"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "yara_garcia_1905"
+              },
+              "response": "{\"user_id\": \"yara_garcia_1905\", \"name\": {\"first_name\": \"Yara\", \"last_name\": \"Garcia\"}, \"address\": {\"address1\": \"377 Pine Lane\", \"address2\": \"Suite 694\", \"city\": \"Denver\", \"country\": \"USA\", \"state\": \"C"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "HXDUBJ"
+              },
+              "response": "{\"reservation_id\": \"HXDUBJ\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT085\", \"origin\": \"I"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "IAH",
+                "destination": "SFO",
+                "date": "2024-05-19"
+              },
+              "response": "[{\"flight_number\": \"HAT072\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"status\": \"available\", \"scheduled_departure_time_est\": \"09:00:00\", \"scheduled_arrival_time_est\": \"13:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "SFO",
+                "destination": "IAH",
+                "date": "2024-05-23"
+              },
+              "response": "[{\"flight_number\": \"HAT082\", \"origin\": \"SFO\", \"destination\": \"IAH\", \"status\": \"available\", \"scheduled_departure_time_est\": \"23:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": null, \"availa"
+            },
+            {
+              "tool": "cancel_reservation",
+              "args": {
+                "reservation_id": "HXDUBJ"
+              },
+              "response": "{\"reservation_id\": \"HXDUBJ\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT085\", \"origin\": \"I"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "yara_garcia_1905",
+                "origin": "IAH",
+                "destination": "SFO",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT180",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT072",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT278",
+                    "date": "2024-05-23"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Yara",
+                    "last_name": "Garcia",
+                    "dob": "1974-08-15"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_6941833",
+                    "amount": 533
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "yes"
+              },
+              "response": "Error: Not enough balance in payment method gift_card_6941833"
+            },
+            {
+              "tool": "calculate",
+              "args": {
+                "expression": "130 + 130 + 187 - 533"
+              },
+              "response": "-86.0"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "yara_garcia_1905",
+                "origin": "IAH",
+                "destination": "SFO",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT180",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT072",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT278",
+                    "date": "2024-05-23"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Yara",
+                    "last_name": "Garcia",
+                    "dob": "1974-08-15"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_6941833",
+                    "amount": 152
+                  },
+                  {
+                    "payment_id": "gift_card_1646646",
+                    "amount": 200
+                  },
+                  {
+                    "payment_id": "certificate_2345996",
+                    "amount": 150
+                  },
+                  {
+                    "payment_id": "gift_card_6941833",
+                    "amount": 34
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "yes"
+              },
+              "response": "Error: Payment amount does not add up, total price is 477, but paid 536"
+            },
+            {
+              "tool": "calculate",
+              "args": {
+                "expression": "130 + 130 + 187"
+              },
+              "response": "447.0"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "yara_garcia_1905",
+                "origin": "IAH",
+                "destination": "SFO",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT180",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT072",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT278",
+                    "date": "2024-05-23"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Yara",
+                    "last_name": "Garcia",
+                    "dob": "1974-08-15"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_6941833",
+                    "amount": 152
+                  },
+                  {
+                    "payment_id": "gift_card_1646646",
+                    "amount": 200
+                  },
+                  {
+                    "payment_id": "certificate_2345996",
+                    "amount": 95
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "yes"
+              },
+              "response": "Error: Payment amount does not add up, total price is 477, but paid 447"
+            },
+            {
+              "tool": "calculate",
+              "args": {
+                "expression": "447 + 30"
+              },
+              "response": "477.0"
+            },
+            {
+              "tool": "book_reservation",
+              "args": {
+                "user_id": "yara_garcia_1905",
+                "origin": "IAH",
+                "destination": "SFO",
+                "flight_type": "round_trip",
+                "cabin": "economy",
+                "flights": [
+                  {
+                    "flight_number": "HAT180",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT072",
+                    "date": "2024-05-19"
+                  },
+                  {
+                    "flight_number": "HAT278",
+                    "date": "2024-05-23"
+                  }
+                ],
+                "passengers": [
+                  {
+                    "first_name": "Yara",
+                    "last_name": "Garcia",
+                    "dob": "1974-08-15"
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "payment_id": "gift_card_6941833",
+                    "amount": 152
+                  },
+                  {
+                    "payment_id": "gift_card_1646646",
+                    "amount": 200
+                  },
+                  {
+                    "payment_id": "certificate_2345996",
+                    "amount": 125
+                  }
+                ],
+                "total_baggages": 0,
+                "nonfree_baggages": 0,
+                "insurance": "yes"
+              },
+              "response": "{\"reservation_id\": \"HATHAT\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT180\", \"origin\": \"I"
+            }
+          ]
+        }
+      },
+      "unseeded": [
+        "A",
+        "A",
+        "A",
+        "A"
+      ],
+      "unseeded_trajs": [
+        [
+          "get_reservation_details",
+          "search_direct_flight",
+          "search_direct_flight",
+          "update_reservation_flights"
+        ],
+        [
+          "get_reservation_details",
+          "search_direct_flight",
+          "search_direct_flight",
+          "update_reservation_flights"
+        ],
+        [
+          "get_reservation_details",
+          "search_direct_flight",
+          "search_direct_flight",
+          "update_reservation_flights"
+        ],
+        [
+          "get_reservation_details",
+          "search_direct_flight",
+          "search_direct_flight",
+          "update_reservation_flights"
+        ]
+      ],
+      "bound": {
+        "A1": true,
+        "A2": true,
+        "B1": true,
+        "B2": true
+      },
+      "realized_all": {
+        "A1": "A",
+        "A2": "A",
+        "B1": "B",
+        "B2": "B"
+      },
+      "noise_agree": true,
+      "seed_invariant": false
+    },
+    {
+      "task_id": "37",
+      "status": "ok",
+      "reason": "I need IFOYYZ and NQNU5R to be removed entirely, and I want M20IZO to be upgraded to business class. The flights should end up as: IFOYYZ (same flights, same date, but business class), NQNU5R (same flights, same date, but business class), and M20IZO (same flights, same date, but business class). Either my current reservations can be adjusted to reflect this, or the old reservations can be undone and new ones made from scratch\u2014whichever you recommend is fine\u2014I truly have no preference.",
+      "endorse_A": true,
+      "endorse_B": true,
+      "traj_forced_A": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "search_onestop_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "update_reservation_flights",
+        "update_reservation_flights",
+        "update_reservation_flights"
+      ],
+      "traj_forced_B": [
+        "get_user_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "get_reservation_details",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "search_onestop_flight",
+        "search_direct_flight",
+        "search_onestop_flight",
+        "cancel_reservation",
+        "cancel_reservation",
+        "cancel_reservation",
+        "book_reservation"
+      ],
+      "judge_forced_A": {
+        "resolved": false,
+        "violation": true,
+        "outcome": "NQNU5R not found"
+      },
+      "judge_forced_B": {
+        "resolved": false,
+        "violation": true,
+        "outcome": "Reservations canceled, no new bookings made"
+      },
+      "frees": {
+        "A1": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "get_reservation_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_onestop_flight",
+            "search_onestop_flight",
+            "update_reservation_flights",
+            "update_reservation_flights"
+          ],
+          "realized": "A",
+          "judge": {
+            "resolved": false,
+            "violation": true,
+            "outcome": "NQNU5R not removed"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "aarav_ahmed_6699"
+              },
+              "response": "{\"user_id\": \"aarav_ahmed_6699\", \"name\": {\"first_name\": \"Aarav\", \"last_name\": \"Ahmed\"}, \"address\": {\"address1\": \"176 Willow Lane\", \"address2\": \"Suite 431\", \"city\": \"Jacksonville\", \"country\": \"USA\", \"st"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "IFOYYZ"
+              },
+              "response": "{\"reservation_id\": \"IFOYYZ\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"CLT\", \"destination\": \"EWR\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT157\", \"origi"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "NQNU5R"
+              },
+              "response": "{\"reservation_id\": \"NQNU5R\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"MCO\", \"destination\": \"SEA\", \"flight_type\": \"one_way\", \"cabin\": \"business\", \"flights\": [{\"flight_number\": \"HAT214\", \"origin\": \"MCO"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "M20IZO"
+              },
+              "response": "{\"reservation_id\": \"M20IZO\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"JFK\", \"destination\": \"MCO\", \"flight_type\": \"one_way\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT268\", \"origin\": \"JFK\""
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "CLT",
+                "destination": "EWR",
+                "date": "2024-05-28"
+              },
+              "response": "[{\"flight_number\": \"HAT015\", \"origin\": \"CLT\", \"destination\": \"EWR\", \"status\": \"available\", \"scheduled_departure_time_est\": \"01:00:00\", \"scheduled_arrival_time_est\": \"03:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "EWR",
+                "destination": "CLT",
+                "date": "2024-05-30"
+              },
+              "response": "[{\"flight_number\": \"HAT043\", \"origin\": \"EWR\", \"destination\": \"CLT\", \"status\": \"available\", \"scheduled_departure_time_est\": \"15:00:00\", \"scheduled_arrival_time_est\": \"17:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "MCO",
+                "destination": "SEA",
+                "date": "2024-05-13"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "PHX",
+                "destination": "SEA",
+                "date": "2024-05-14"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "search_onestop_flight",
+              "args": {
+                "origin": "MCO",
+                "destination": "SEA",
+                "date": "2024-05-13"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "search_onestop_flight",
+              "args": {
+                "origin": "PHX",
+                "destination": "SEA",
+                "date": "2024-05-14"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "update_reservation_flights",
+              "args": {
+                "reservation_id": "IFOYYZ",
+                "cabin": "business",
+                "flights": [
+                  {
+                    "flight_number": "HAT157",
+                    "date": "2024-05-28"
+                  },
+                  {
+                    "flight_number": "HAT215",
+                    "date": "2024-05-30"
+                  }
+                ],
+                "payment_id": "credit_card_4959530"
+              },
+              "response": "{\"reservation_id\": \"IFOYYZ\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"CLT\", \"destination\": \"EWR\", \"flight_type\": \"round_trip\", \"cabin\": \"business\", \"flights\": [{\"flight_number\": \"HAT157\", \"origin\": \""
+            },
+            {
+              "tool": "update_reservation_flights",
+              "args": {
+                "reservation_id": "M20IZO",
+                "cabin": "business",
+                "flights": [
+                  {
+                    "flight_number": "HAT268",
+                    "date": "2024-05-22"
+                  },
+                  {
+                    "flight_number": "HAT010",
+                    "date": "2024-05-22"
+                  }
+                ],
+                "payment_id": "credit_card_4959530"
+              },
+              "response": "{\"reservation_id\": \"M20IZO\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"JFK\", \"destination\": \"MCO\", \"flight_type\": \"one_way\", \"cabin\": \"business\", \"flights\": [{\"flight_number\": \"HAT268\", \"origin\": \"JFK"
+            }
+          ]
+        },
+        "A2": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "get_reservation_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_onestop_flight",
+            "search_onestop_flight",
+            "update_reservation_flights",
+            "update_reservation_flights"
+          ],
+          "realized": "A",
+          "judge": {
+            "resolved": false,
+            "violation": true,
+            "outcome": "IFOYYZ updated, M20IZO updated, NQNU5R not removed"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "aarav_ahmed_6699"
+              },
+              "response": "{\"user_id\": \"aarav_ahmed_6699\", \"name\": {\"first_name\": \"Aarav\", \"last_name\": \"Ahmed\"}, \"address\": {\"address1\": \"176 Willow Lane\", \"address2\": \"Suite 431\", \"city\": \"Jacksonville\", \"country\": \"USA\", \"st"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "IFOYYZ"
+              },
+              "response": "{\"reservation_id\": \"IFOYYZ\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"CLT\", \"destination\": \"EWR\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT157\", \"origi"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "NQNU5R"
+              },
+              "response": "{\"reservation_id\": \"NQNU5R\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"MCO\", \"destination\": \"SEA\", \"flight_type\": \"one_way\", \"cabin\": \"business\", \"flights\": [{\"flight_number\": \"HAT214\", \"origin\": \"MCO"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "M20IZO"
+              },
+              "response": "{\"reservation_id\": \"M20IZO\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"JFK\", \"destination\": \"MCO\", \"flight_type\": \"one_way\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT268\", \"origin\": \"JFK\""
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "CLT",
+                "destination": "EWR",
+                "date": "2024-05-28"
+              },
+              "response": "[{\"flight_number\": \"HAT015\", \"origin\": \"CLT\", \"destination\": \"EWR\", \"status\": \"available\", \"scheduled_departure_time_est\": \"01:00:00\", \"scheduled_arrival_time_est\": \"03:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "EWR",
+                "destination": "CLT",
+                "date": "2024-05-30"
+              },
+              "response": "[{\"flight_number\": \"HAT043\", \"origin\": \"EWR\", \"destination\": \"CLT\", \"status\": \"available\", \"scheduled_departure_time_est\": \"15:00:00\", \"scheduled_arrival_time_est\": \"17:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "MCO",
+                "destination": "SEA",
+                "date": "2024-05-13"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "PHX",
+                "destination": "SEA",
+                "date": "2024-05-14"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "search_onestop_flight",
+              "args": {
+                "origin": "MCO",
+                "destination": "SEA",
+                "date": "2024-05-13"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "search_onestop_flight",
+              "args": {
+                "origin": "PHX",
+                "destination": "SEA",
+                "date": "2024-05-14"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "update_reservation_flights",
+              "args": {
+                "reservation_id": "IFOYYZ",
+                "cabin": "business",
+                "flights": [
+                  {
+                    "flight_number": "HAT157",
+                    "date": "2024-05-28"
+                  },
+                  {
+                    "flight_number": "HAT215",
+                    "date": "2024-05-30"
+                  }
+                ],
+                "payment_id": "credit_card_4959530"
+              },
+              "response": "{\"reservation_id\": \"IFOYYZ\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"CLT\", \"destination\": \"EWR\", \"flight_type\": \"round_trip\", \"cabin\": \"business\", \"flights\": [{\"flight_number\": \"HAT157\", \"origin\": \""
+            },
+            {
+              "tool": "update_reservation_flights",
+              "args": {
+                "reservation_id": "M20IZO",
+                "cabin": "business",
+                "flights": [
+                  {
+                    "flight_number": "HAT268",
+                    "date": "2024-05-22"
+                  },
+                  {
+                    "flight_number": "HAT010",
+                    "date": "2024-05-22"
+                  }
+                ],
+                "payment_id": "credit_card_4959530"
+              },
+              "response": "{\"reservation_id\": \"M20IZO\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"JFK\", \"destination\": \"MCO\", \"flight_type\": \"one_way\", \"cabin\": \"business\", \"flights\": [{\"flight_number\": \"HAT268\", \"origin\": \"JFK"
+            }
+          ]
+        },
+        "B1": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "get_reservation_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_onestop_flight",
+            "search_onestop_flight",
+            "transfer_to_human_agents"
+          ],
+          "realized": "none",
+          "judge": {
+            "resolved": false,
+            "violation": false,
+            "outcome": "Transfer initiated"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "aarav_ahmed_6699"
+              },
+              "response": "{\"user_id\": \"aarav_ahmed_6699\", \"name\": {\"first_name\": \"Aarav\", \"last_name\": \"Ahmed\"}, \"address\": {\"address1\": \"176 Willow Lane\", \"address2\": \"Suite 431\", \"city\": \"Jacksonville\", \"country\": \"USA\", \"st"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "IFOYYZ"
+              },
+              "response": "{\"reservation_id\": \"IFOYYZ\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"CLT\", \"destination\": \"EWR\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT157\", \"origi"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "NQNU5R"
+              },
+              "response": "{\"reservation_id\": \"NQNU5R\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"MCO\", \"destination\": \"SEA\", \"flight_type\": \"one_way\", \"cabin\": \"business\", \"flights\": [{\"flight_number\": \"HAT214\", \"origin\": \"MCO"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "M20IZO"
+              },
+              "response": "{\"reservation_id\": \"M20IZO\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"JFK\", \"destination\": \"MCO\", \"flight_type\": \"one_way\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT268\", \"origin\": \"JFK\""
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "CLT",
+                "destination": "EWR",
+                "date": "2024-05-28"
+              },
+              "response": "[{\"flight_number\": \"HAT015\", \"origin\": \"CLT\", \"destination\": \"EWR\", \"status\": \"available\", \"scheduled_departure_time_est\": \"01:00:00\", \"scheduled_arrival_time_est\": \"03:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "EWR",
+                "destination": "CLT",
+                "date": "2024-05-30"
+              },
+              "response": "[{\"flight_number\": \"HAT043\", \"origin\": \"EWR\", \"destination\": \"CLT\", \"status\": \"available\", \"scheduled_departure_time_est\": \"15:00:00\", \"scheduled_arrival_time_est\": \"17:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "MCO",
+                "destination": "SEA",
+                "date": "2024-05-13"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "PHX",
+                "destination": "SEA",
+                "date": "2024-05-14"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "search_onestop_flight",
+              "args": {
+                "origin": "MCO",
+                "destination": "SEA",
+                "date": "2024-05-13"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "search_onestop_flight",
+              "args": {
+                "origin": "PHX",
+                "destination": "SEA",
+                "date": "2024-05-14"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "transfer_to_human_agents",
+              "args": {
+                "summary": "User Aarav Ahmed (user id: aarav_ahmed_6699) wants to modify reservations IFOYYZ, NQNU5R, and M20IZO. IFOYYZ and M20IZO can be modified to business class, but NQNU5R cannot be modified because the required flights (MCO to SEA on 2024-05-13 and PHX to SEA on 2024-05-14) are not available. The user needs assistance with this issue."
+              },
+              "response": "Transfer successful"
+            }
+          ]
+        },
+        "B2": {
+          "traj": [
+            "get_user_details",
+            "get_reservation_details",
+            "get_reservation_details",
+            "get_reservation_details",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_direct_flight",
+            "search_onestop_flight",
+            "search_onestop_flight",
+            "transfer_to_human_agents"
+          ],
+          "realized": "none",
+          "judge": {
+            "resolved": false,
+            "violation": false,
+            "outcome": "Transfer to human agent"
+          },
+          "log": [
+            {
+              "tool": "get_user_details",
+              "args": {
+                "user_id": "aarav_ahmed_6699"
+              },
+              "response": "{\"user_id\": \"aarav_ahmed_6699\", \"name\": {\"first_name\": \"Aarav\", \"last_name\": \"Ahmed\"}, \"address\": {\"address1\": \"176 Willow Lane\", \"address2\": \"Suite 431\", \"city\": \"Jacksonville\", \"country\": \"USA\", \"st"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "IFOYYZ"
+              },
+              "response": "{\"reservation_id\": \"IFOYYZ\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"CLT\", \"destination\": \"EWR\", \"flight_type\": \"round_trip\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT157\", \"origi"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "NQNU5R"
+              },
+              "response": "{\"reservation_id\": \"NQNU5R\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"MCO\", \"destination\": \"SEA\", \"flight_type\": \"one_way\", \"cabin\": \"business\", \"flights\": [{\"flight_number\": \"HAT214\", \"origin\": \"MCO"
+            },
+            {
+              "tool": "get_reservation_details",
+              "args": {
+                "reservation_id": "M20IZO"
+              },
+              "response": "{\"reservation_id\": \"M20IZO\", \"user_id\": \"aarav_ahmed_6699\", \"origin\": \"JFK\", \"destination\": \"MCO\", \"flight_type\": \"one_way\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT268\", \"origin\": \"JFK\""
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "CLT",
+                "destination": "EWR",
+                "date": "2024-05-28"
+              },
+              "response": "[{\"flight_number\": \"HAT015\", \"origin\": \"CLT\", \"destination\": \"EWR\", \"status\": \"available\", \"scheduled_departure_time_est\": \"01:00:00\", \"scheduled_arrival_time_est\": \"03:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "EWR",
+                "destination": "CLT",
+                "date": "2024-05-30"
+              },
+              "response": "[{\"flight_number\": \"HAT043\", \"origin\": \"EWR\", \"destination\": \"CLT\", \"status\": \"available\", \"scheduled_departure_time_est\": \"15:00:00\", \"scheduled_arrival_time_est\": \"17:00:00\", \"date\": null, \"availabl"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "MCO",
+                "destination": "SEA",
+                "date": "2024-05-13"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "search_direct_flight",
+              "args": {
+                "origin": "PHX",
+                "destination": "SEA",
+                "date": "2024-05-14"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "search_onestop_flight",
+              "args": {
+                "origin": "MCO",
+                "destination": "SEA",
+                "date": "2024-05-13"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "search_onestop_flight",
+              "args": {
+                "origin": "PHX",
+                "destination": "SEA",
+                "date": "2024-05-14"
+              },
+              "response": "[]"
+            },
+            {
+              "tool": "transfer_to_human_agents",
+              "args": {
+                "summary": "User Aarav Ahmed (user id: aarav_ahmed_6699) wants to modify reservations IFOYYZ, NQNU5R, and M20IZO. IFOYYZ and M20IZO can be modified to business class. However, NQNU5R cannot be modified because there are no available flights for the route MCO to SEA on 2024-05-13 or PHX to SEA on 2024-05-14. The user needs assistance with this reservation."
+              },
+              "response": "Transfer successful"
+            }
+          ]
+        }
+      },
+      "unseeded": [
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "unseeded_trajs": [
+        [
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "cancel_reservation",
+          "cancel_reservation",
+          "update_reservation_flights",
+          "send_certificate"
+        ],
+        [
+          "transfer_to_human_agents",
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "update_reservation_flights",
+          "cancel_reservation",
+          "cancel_reservation"
+        ],
+        [
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "cancel_reservation",
+          "cancel_reservation",
+          "update_reservation_flights"
+        ],
+        [
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_reservation_details",
+          "get_user_details",
+          "get_flight_status",
+          "get_flight_status",
+          "get_flight_status",
+          "get_flight_status",
+          "get_flight_status",
+          "get_flight_status",
+          "cancel_reservation",
+          "update_reservation_flights",
+          "search_direct_flight",
+          "search_direct_flight",
+          "book_reservation"
+        ]
+      ],
+      "bound": {
+        "A1": true,
+        "A2": true
+      },
+      "realized_all": {
+        "A1": "A",
+        "A2": "A",
+        "B1": "none",
+        "B2": "none"
+      },
+      "noise_agree": true,
+      "seed_invariant": false
+    }
+  ]
+}
